@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<title>订单管理</title>
+<base href="https://la.gesoo.com/owner/"/>
+<link rel="stylesheet" type="text/css" href="view/stylesheet/stylesheet.css"/>
+<script type="text/javascript" src="view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<link type="text/css" href="view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet"/>
+<script type="text/javascript" src="view/javascript/jquery/tabs.js"></script>
+<script type="text/javascript" src="view/javascript/jquery/superfish/js/superfish.js"></script>
+<script type="text/javascript" src="view/javascript/common.js"></script>
+<script type="text/javascript">
+
+//-----------------------------------------
+
+// Confirm Actions (delete, uninstall)
+
+//-----------------------------------------
+
+$(document).ready(function(){
+
+    // Confirm Delete
+
+    $('#form').submit(function(){
+
+        if ($(this).attr('action').indexOf('delete',1) != -1) {
+
+            if (!confirm('删除或卸载后您将不能恢复，请确定要这么做吗？')) {
+
+                return false;
+
+            }
+
+        }
+
+    });
+
+    	
+
+    // Confirm Uninstall
+
+    $('a').click(function(){
+
+        if ($(this).attr('href') != null && $(this).attr('href').indexOf('uninstall', 1) != -1) {
+
+            if (!confirm('删除或卸载后您将不能恢复，请确定要这么做吗？')) {
+
+                return false;
+
+            }
+
+        }
+
+    });
+
+});
+
+</script>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<div class="div1">
+<div class="div2"><img src="view/image/logo.png" title="功能菜单" onclick="location = 'https://la.gesoo.com/owner/index.php?route=common/home&amp;token=3b7c49dc412f211958bcba006dc759d7'"/></div>
+<div class="div3"><img src="view/image/lock.png" alt style="position: relative; top: 3px;"/>&nbsp;您已登录为 <span>zwcd</span></div>
+</div>
+<div id="menu">
+<ul class="left" style="display: none;">
+<li id="dashboard"><a href="https://la.gesoo.com/owner/index.php?route=common/home&amp;token=3b7c49dc412f211958bcba006dc759d7" class="top">管理首页</a></li>
+<li id="catalog"><a class="top" href="https://la.gesoo.com/owner/index.php?route=catalog/category&amp;token=3b7c49dc412f211958bcba006dc759d7">商品分类</a></li>
+<li id="product"><a class="top" href="https://la.gesoo.com/owner/index.php?route=catalog/product&amp;token=3b7c49dc412f211958bcba006dc759d7">商品管理</a></li>
+<li id="option"><a class="top" href="https://la.gesoo.com/owner/index.php?route=catalog/option&amp;token=3b7c49dc412f211958bcba006dc759d7">选项</a></li>
+<li id="order"><a class="top" href="https://la.gesoo.com/owner/index.php?route=sale/order&amp;token=3b7c49dc412f211958bcba006dc759d7">订单管理</a>
+</li>
+<li id="reports"><a class="top">统计报表</a>
+<ul>
+<li><a class="parent">营销推广</a>
+<ul>
+<li><a href="https://la.gesoo.com/owner/index.php?route=report/sale_order&amp;token=3b7c49dc412f211958bcba006dc759d7">销售订单统计</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="password"><a class="top" href="https://la.gesoo.com/owner/index.php?route=user/user/update&amp;token=3b7c49dc412f211958bcba006dc759d7">修改密码</a></li>
+</ul>
+<ul class="right" style="display: none;">
+<li id="store"><a href="http://www.gesoo.com/" target="_blank" class="top">滋味成都商店前台</a>
+</li>
+<li><a class="top" href="https://la.gesoo.com/owner/index.php?route=common/logout&amp;token=3b7c49dc412f211958bcba006dc759d7">退出系统</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="breadcrumb">
+<a href="https://la.gesoo.com/owner/index.php?route=common/home&amp;token=3b7c49dc412f211958bcba006dc759d7">首页</a>
+:: <a href="https://la.gesoo.com/owner/index.php?route=sale/order&amp;token=3b7c49dc412f211958bcba006dc759d7">订单管理</a>
+</div>
+<div class="box">
+<div class="heading">
+<h1><img src="view/image/order.png" alt/> 订单管理</h1>
+</div>
+<div class="content">
+<div class="vtabs"><a href="#tab-order">订单详情</a>
+<a href="#tab-shipping">寄送地址</a>
+<a href="#tab-product">商品清单</a>
+</div>
+<div id="tab-order" class="vtabs-content">
+<table class="form">
+<tr>
+<td>订单号：</td>
+<td>#311724</td>
+</tr>
+<tr>
+<td>网店名称：</td>
+<td>滋味成都</td>
+</tr>
+<tr>
+<td>客户名称：</td>
+<td>Wen Xia</td>
+</tr>
+<tr>
+<td>客户组：</td>
+<td>Default</td>
+</tr>
+
+<tr>
+<td>合计金额：</td>
+<td>$58.03 </td>
+</tr>
+<tr>
+<td>订单状态：</td>
+<td id="order-status">Complete</td>
+</tr>
+
+<tr>
+<td>生成日期：</td>
+<td>2017/08/29</td>
+</tr>
+<tr>
+<td>修改日期：</td>
+<td>2017/08/29</td>
+</tr>
+</table>
+</div>
+<div id="tab-shipping" class="vtabs-content">
+<table class="form">
+<tr>
+<td>客户的名字：</td>
+<td>Wen</td>
+</tr>
+<tr>
+<td>客户的姓氏：</td>
+<td>Xia</td>
+</tr>
+
+<tr>
+<td>城市：</td>
+<td>Alhambra</td>
+</tr>
+<tr>
+<td>邮编：</td>
+<td>91801</td>
+</tr>
+<tr>
+<td>地区 / 省份：</td>
+<td>California</td>
+</tr>
+<tr>
+<td>地区 / 省份代码：</td>
+<td>CA</td>
+</tr>
+<tr>
+<td>国家：</td>
+<td>United States</td>
+</tr>
+<tr>
+<td>货运方式：</td>
+<td>里程数 (5.1mi)</td>
+</tr>
+</table>
+</div>
+<div id="tab-product" class="vtabs-content">
+<table class="list">
+<thead>
+<tr>
+<td class="left">商品品名</td>
+<td class="left">型号</td>
+<td class="right">数量</td>
+<td class="right">价格</td>
+<td class="right">总计</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><a href="https://la.gesoo.com/owner/index.php?route=catalog/product/update&amp;token=3b7c49dc412f211958bcba006dc759d7&amp;product_id=50071">豆芽圆子汤</a>
+</td>
+<td class="left">滋味成都-70</td>
+<td class="right">1</td>
+<td class="right">$8.99 ($7.36)</td>
+<td class="right">$8.99 ($7.36)</td>
+</tr>
+<tr>
+<td class="left"><a href="https://la.gesoo.com/owner/index.php?route=catalog/product/update&amp;token=3b7c49dc412f211958bcba006dc759d7&amp;product_id=50043">素炒山药</a>
+</td>
+<td class="left">滋味成都-42</td>
+<td class="right">1</td>
+<td class="right">$11.99 ($9.81)</td>
+<td class="right">$11.99 ($9.81)</td>
+</tr>
+<tr>
+<td class="left"><a href="https://la.gesoo.com/owner/index.php?route=catalog/product/update&amp;token=3b7c49dc412f211958bcba006dc759d7&amp;product_id=50068">粉蒸肉</a>
+</td>
+<td class="left">滋味成都-67</td>
+<td class="right">1</td>
+<td class="right">$10.99 ($8.99)</td>
+<td class="right">$10.99 ($8.99)</td>
+</tr>
+<tr>
+<td class="left"><a href="https://la.gesoo.com/owner/index.php?route=catalog/product/update&amp;token=3b7c49dc412f211958bcba006dc759d7&amp;product_id=50030">麻婆豆腐</a>
+</td>
+<td class="left">滋味成都-29</td>
+<td class="right">1</td>
+<td class="right">$9.99 ($8.17)</td>
+<td class="right">$9.99 ($8.17)</td>
+</tr>
+</tbody>
+<tbody id="totals">
+<tr>
+<td colspan="4" class="right">商品总额:</td>
+<td class="right">
+$41.96
+</td>
+</tr>
+</tbody>
+<tbody id="totals">
+<tr>
+<td colspan="4" class="right">Tax:</td>
+<td class="right">
+$3.88
+</td>
+</tr>
+</tbody>
+<tbody id="totals">
+<tr>
+<td colspan="4" class="right">里程数 (5.1mi) - 2017-08-29 06:30 pm – 07:00 pm:</td>
+<td class="right">
+$7.99
+</td>
+</tr>
+</tbody>
+<tbody id="totals">
+<tr>
+<td colspan="4" class="right">小费:</td>
+<td class="right">
+$4.20
+</td>
+</tr>
+</tbody>
+<tbody id="totals">
+<tr>
+<td colspan="4" class="right">订单总额:</td>
+<td class="right">
+$58.03
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript"><!--
+$('#invoice-generate').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/createinvoiceno&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#invoice').after('<img src="view/image/loading.gif" class="loading" style="padding-left: 5px;" />');	
+		},
+		complete: function() {
+			$('.loading').remove();
+		},
+		success: function(json) {
+			$('.success, .warning').remove();
+						
+			if (json['error']) {
+				$('#tab-order').prepend('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				
+				$('.warning').fadeIn('slow');
+			}
+			
+			if (json.invoice_no) {
+				$('#invoice').fadeOut('slow', function() {
+					$('#invoice').html(json['invoice_no']);
+					
+					$('#invoice').fadeIn('slow');
+				});
+			}
+		}
+	});
+});
+
+$('#credit-add').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/addcredit&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#credit').after('<img src="view/image/loading.gif" class="loading" style="padding-left: 5px;" />');			
+		},
+		complete: function() {
+			$('.loading').remove();
+		},			
+		success: function(json) {
+			$('.success, .warning').remove();
+			
+			if (json['error']) {
+				$('.box').before('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				
+				$('.warning').fadeIn('slow');
+			}
+			
+			if (json['success']) {
+                $('.box').before('<div class="success" style="display: none;">' + json['success'] + '</div>');
+				
+				$('.success').fadeIn('slow');
+				
+				$('#credit').html('<b>[</b> <a id="credit-remove">删除信用</a> <b>]</b>');
+			}
+		}
+	});
+});
+
+$('#credit-remove').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/removecredit&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#credit').after('<img src="view/image/loading.gif" class="loading" style="padding-left: 5px;" />');			
+		},
+		complete: function() {
+			$('.loading').remove();
+		},			
+		success: function(json) {
+			$('.success, .warning').remove();
+						
+			if (json['error']) {
+				$('.box').before('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				
+				$('.warning').fadeIn('slow');
+			}
+			
+			if (json['success']) {
+                $('.box').before('<div class="success" style="display: none;">' + json['success'] + '</div>');
+				
+				$('.success').fadeIn('slow');
+				
+				$('#credit').html('<b>[</b> <a id="credit-add">添加信用</a> <b>]</b>');
+			}
+		}
+	});
+});
+
+$('#reward-add').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/addreward&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#reward').after('<img src="view/image/loading.gif" class="loading" style="padding-left: 5px;" />');			
+		},
+		complete: function() {
+			$('.loading').remove();
+		},									
+		success: function(json) {
+			$('.success, .warning').remove();
+						
+			if (json['error']) {
+				$('.box').before('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				
+				$('.warning').fadeIn('slow');
+			}
+			
+			if (json['success']) {
+                $('.box').before('<div class="success" style="display: none;">' + json['success'] + '</div>');
+				
+				$('.success').fadeIn('slow');
+
+				$('#reward').html('<b>[</b> <a id="reward-remove">删除奖励积分</a> <b>]</b>');
+			}
+		}
+	});
+});
+
+$('#reward-remove').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/removereward&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#reward').after('<img src="view/image/loading.gif" class="loading" style="padding-left: 5px;" />');
+		},
+		complete: function() {
+			$('.loading').remove();
+		},				
+		success: function(json) {
+			$('.success, .warning').remove();
+						
+			if (json['error']) {
+				$('.box').before('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				
+				$('.warning').fadeIn('slow');
+			}
+			
+			if (json['success']) {
+                $('.box').before('<div class="success" style="display: none;">' + json['success'] + '</div>');
+				
+				$('.success').fadeIn('slow');
+				
+				$('#reward').html('<b>[</b> <a id="reward-add">添加奖励积分</a> <b>]</b>');
+			}
+		}
+	});
+});
+
+$('#commission-add').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/addcommission&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#commission').after('<img src="view/image/loading.gif" class="loading" style="padding-left: 5px;" />');			
+		},
+		complete: function() {
+			$('.loading').remove();
+		},			
+		success: function(json) {
+			$('.success, .warning').remove();
+						
+			if (json['error']) {
+				$('.box').before('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				
+				$('.warning').fadeIn('slow');
+			}
+			
+			if (json['success']) {
+                $('.box').before('<div class="success" style="display: none;">' + json['success'] + '</div>');
+				
+				$('.success').fadeIn('slow');
+                
+				$('#commission').html('<b>[</b> <a id="commission-remove">删除佣金</a> <b>]</b>');
+			}
+		}
+	});
+});
+
+$('#commission-remove').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/removecommission&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#commission').after('<img src="view/image/loading.gif" class="loading" style="padding-left: 5px;" />');			
+		},
+		complete: function() {
+			$('.loading').remove();
+		},			
+		success: function(json) {
+			$('.success, .warning').remove();
+						
+			if (json['error']) {
+				$('.box').before('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				
+				$('.warning').fadeIn('slow');
+			}
+			
+			if (json['success']) {
+                $('.box').before('<div class="success" style="display: none;">' + json['success'] + '</div>');
+				
+				$('.success').fadeIn('slow');
+				
+				$('#commission').html('<b>[</b> <a id="commission-add">添加佣金</a> <b>]</b>');
+			}
+		}
+	});
+});
+
+$('#history .pagination a').live('click', function() {
+	$('#history').load(this.href);
+	
+	return false;
+});			
+
+$('#history').load('index.php?route=sale/order/history&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724');
+
+$('#button-history').live('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/history&token=3b7c49dc412f211958bcba006dc759d7&order_id=311724',
+		type: 'post',
+		dataType: 'html',
+		data: 'order_status_id=' + encodeURIComponent($('select[name=\'order_status_id\']').val()) + '&notify=' + encodeURIComponent($('input[name=\'notify\']').attr('checked') ? 1 : 0) + '&append=' + encodeURIComponent($('input[name=\'append\']').attr('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()),
+		beforeSend: function() {
+			$('.success, .warning').remove();
+			$('#button-history').attr('disabled', true);
+			$('#history').prepend('<div class="attention"><img src="view/image/loading.gif" alt="" /> 请等待！</div>');
+		},
+		complete: function() {
+			$('#button-history').attr('disabled', false);
+			$('.attention').remove();
+		},
+		success: function(html) {
+			$('#history').html(html);
+			
+			$('textarea[name=\'comment\']').val('');
+			
+			$('#order-status').html($('select[name=\'order_status_id\'] option:selected').text());
+		}
+	});
+});
+//--></script>
+<script type="text/javascript"><!--
+$('.vtabs a').tabs();
+//--></script>
+</div>
+<div id="footer"><a href="http://www.superdesign.us">SuperDesign.us</a> &copy; 2009-2017 All Rights Reserved.<br/>Version 1.5.5.1</div>
+</body></html>

@@ -1,0 +1,4 @@
+Tue, 29 Aug 2017 02:37:52 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): la.gesoo.com
+Tue, 29 Aug 2017 02:37:53 connectionpool.py[line:396] DEBUG https://la.gesoo.com:443 "POST /owner/index.php?route=common/login HTTP/1.1" 302 None
+Tue, 29 Aug 2017 02:37:53 connectionpool.py[line:396] DEBUG https://la.gesoo.com:443 "GET /owner/index.php?route=common/home&token=cb6b66975b95991ef8ea15cbcb4590c9 HTTP/1.1" 200 None
+Tue, 29 Aug 2017 02:37:53 root.py[line:270] INFO sucess log in
